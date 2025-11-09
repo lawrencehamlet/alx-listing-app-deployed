@@ -27,9 +27,9 @@ export default function Home() {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('/api/properties');
-        // Assume API returns an array of properties
-        setProperties(response.data || []);
+  const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/properties`);
+  // Assume API returns an array of properties
+  setProperties(response.data || []);
       } catch (error) {
         console.error('Error fetching properties:', error);
         setProperties([]);

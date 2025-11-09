@@ -16,7 +16,7 @@ export default function PropertyDetailPage() {
       if (!id) return;
       
       try {
-        const response = await axios.get(`/api/properties/${id}`);
+  const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/properties/${id}`);
         setProperty(response.data);
         setError(false);
       } catch (error) {
