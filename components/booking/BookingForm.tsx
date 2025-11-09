@@ -97,7 +97,9 @@ const BookingForm: React.FC = () => {
     }
 
     try {
-  await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/bookings`, formData);
+  const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+  const url = API_BASE ? `${API_BASE}/bookings` : '/api/bookings';
+  await axios.post(url, formData);
       setSuccess(true);
       setError(null);
       

@@ -25,7 +25,9 @@ const ReviewSection: React.FC<ReviewSectionProps> = ({ propertyId }) => {
       if (!propertyId) return;
 
       try {
-  const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/properties/${propertyId}/reviews`);
+  const API_BASE = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+  const url = API_BASE ? `${API_BASE}/properties/${propertyId}/reviews` : `/api/properties/${propertyId}/reviews`;
+  const response = await axios.get(url);
   setReviews(response.data || []);
         setError(false);
       } catch (err) {
